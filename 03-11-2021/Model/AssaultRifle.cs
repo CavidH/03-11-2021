@@ -41,6 +41,7 @@ namespace _03_11_2021.Model
         #region Reload2
         public string Reload(int count)
         {
+
             if (count + CurrentMagazineCount > MagazineCapacity)
             {
                 return $"Maghazinde {MagazineCapacity - CurrentMagazineCount} " +
