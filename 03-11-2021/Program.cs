@@ -7,28 +7,61 @@ namespace _03_11_2021
     {
         static void Main(string[] args)
         {
-            string GunNAme=PrintAndReturn("Salam Silahinizin modelin" +
-                " qeyd edin zehmet olmasa:");
-           int Power 
 
+            AssaultRifle assaultRifle= CreateGun();
+            Console.WriteLine("Silahiniz yaradildi silahniz hazqinda informasiya :");
+            assaultRifle.Info();
 
-            AssaultRifle assaultRifle=new AssaultRifle()
 
 
 
 
 
         }
-
+        public static AssaultRifle CreateGun()
+        {
+            string GunNAme = PrintAndReturn("Salam Silahinizin modelin" +
+                " qeyd edin zehmet olmasa:");
+            int Power = PrintAndReturnI("silahnizin gucun daxil edin:");
+            int AmountOfBullets = PrintAndReturnI("ne qeder gulleye ehtiyaciniz olacaq?");
+            int MagazineCapacity = PrintAndReturnI("silahnizin magazin tutumu ne qeder olacaq");
+            AssaultRifle assaultRifle = new AssaultRifle(GunNAme, Power, AmountOfBullets, MagazineCapacity);
+            return assaultRifle;
+        }
         public static string PrintAndReturn(string output)
         {
-            Console.WriteLine(output);
-            return Console.ReadLine();
+        Start:
+            try
+            {
+                Console.WriteLine(output);
+                return Console.ReadLine();
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine("invalid input");
+            }
+
+            goto Start;
+
         }
         public static int PrintAndReturnI(string output)
         {
-            Console.WriteLine(output);
-            return Convert.ToInt32(Console.ReadLine());
+        Start:
+            try
+            {
+                Console.WriteLine(output);
+                return Convert.ToInt32(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine("invalid input");
+            }
+
+            goto Start;
+
+
         }
     }
 }

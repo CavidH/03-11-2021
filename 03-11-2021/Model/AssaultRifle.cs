@@ -11,11 +11,11 @@ namespace _03_11_2021.Model
         public int MagazineCapacity { get; set; }
         public int CurrentMagazineCount { get; set; }
 
-        public AssaultRifle(string model,  double power, int amountOfBullets, int magazineCapacity, int currentMagazineCount) : base(model, power)
+        public AssaultRifle(string model, double power, int amountOfBullets, int magazineCapacity) : base(model, power)
         {
             AmountOfBullets = amountOfBullets;
             MagazineCapacity = magazineCapacity;
-            CurrentMagazineCount = currentMagazineCount;
+            CurrentMagazineCount = magazineCapacity;
         }
         #region Reload1
 
@@ -41,7 +41,7 @@ namespace _03_11_2021.Model
         #region Reload2
         public string Reload(int count)
         {
-            if (count+CurrentMagazineCount>MagazineCapacity)
+            if (count + CurrentMagazineCount > MagazineCapacity)
             {
                 return $"Maghazinde {MagazineCapacity - CurrentMagazineCount} " +
                     $"yer var siz {count} gulle doldura bilmezsiz! " +
@@ -49,7 +49,7 @@ namespace _03_11_2021.Model
                 Reload();
 
             }
-            else if (AmountOfBullets<count)
+            else if (AmountOfBullets < count)
             {
                 return $"sizin yeteri qeder gulleniz yoxdu \n" +
                     $"hal hazirda qalan gulleniz:{AmountOfBullets} bu " +
@@ -64,7 +64,7 @@ namespace _03_11_2021.Model
 
             }
 
-            }
+        }
         #endregion
         #region Shoot1
         public string Shoot()
@@ -84,6 +84,15 @@ namespace _03_11_2021.Model
             return "   ->   ";
         }
         #endregion
-
+        #region Info
+        public string Info()
+        {
+            return $"Model ={Model}\n" +
+                $"Power ={Power}\n" +
+                $"AmountOfBullets ={AmountOfBullets}\n" +
+                $"MagazineCapacity ={MagazineCapacity}\n" +
+                $"CurrentMagazineCount ={CurrentMagazineCount}\n";
+            #endregion
+        }
     }
 }
