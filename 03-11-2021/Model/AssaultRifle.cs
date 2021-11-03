@@ -7,6 +7,7 @@ namespace _03_11_2021.Model
 {
     class AssaultRifle : Gun
     {
+
         public int AmountOfBullets { get; set; }
         public int MagazineCapacity { get; set; }
         public int CurrentMagazineCount { get; set; }
@@ -53,8 +54,8 @@ namespace _03_11_2021.Model
             else if (AmountOfBullets < count)
             {
                 return $"sizin yeteri qeder gulleniz yoxdu \n" +
-                    $"hal hazirda qalan gulleniz:{AmountOfBullets} bu " +
-                    $"qederdi ve bu gulleni magazine doldurduq";
+                    $"hal hazirda qalan gulleniz:{AmountOfBullets}  " +
+                    $"ve gulle 0 dan ferqlidise bu gulleni magazine doldurduq eks halda guleniz bitmis olur";
                 Reload();
             }
             else
@@ -71,13 +72,13 @@ namespace _03_11_2021.Model
         public string Shoot()
         {
             StringBuilder stringBuilder = new StringBuilder();
-            for (int i = CurrentMagazineCount-1; i >= 0; i--)
+            for (int i = CurrentMagazineCount - 1; i >= 0; i--)
             {
-                 
-                stringBuilder.Append( "   ->   ");
+
+                stringBuilder.Append("   ->   ");
             }
             CurrentMagazineCount = 0;
-            return stringBuilder.ToString()+"\n gulleniz bitdi reload edin";
+            return stringBuilder.ToString() + "\n gulleniz bitdi reload edin";
         }
         #endregion
         #region Shoot2
