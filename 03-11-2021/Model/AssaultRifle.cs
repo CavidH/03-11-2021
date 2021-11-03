@@ -69,12 +69,14 @@ namespace _03_11_2021.Model
         #region Shoot1
         public string Shoot()
         {
-            for (int i = CurrentMagazineCount - 1; i >= 0; i--)
+            StringBuilder stringBuilder = new StringBuilder();
+            for (int i = CurrentMagazineCount-1; i >= 0; i--)
             {
-                Thread.Sleep(2000);
-                return "   ->   ";
+                 
+                stringBuilder.Append( "   ->   ");
             }
-            return "Gulle bitdi Reloada ehtiyac var";
+            CurrentMagazineCount = 0;
+            return stringBuilder.ToString()+"\n gulleniz bitdi reload edin";
         }
         #endregion
         #region Shoot2
